@@ -1,0 +1,28 @@
+{
+  "name": "foldy",
+  "version": "0.1.0",
+  "description": "The React component that wraps list of components and creates the folding effect on them.",
+  "main": "index.js",
+  "keywords": [],
+  "author": "",
+  "license": "GPL-3.0-only",
+  "scripts": {
+    "clean": "rm dist/bundle.js",
+    "start": "parcel src/index.html --open",
+    "build-prod": "parcel build src/index.html"
+  },
+  "dependencies": {
+    "@types/react": "^16.9.2",
+    "@types/react-dom": "^16.9.0",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
+    "@babel/preset-react": "^7.0.0",
+    "parcel-bundler": "^1.12.3",
+    "sass": "^1.22.7",
+    "typescript": "^3.5.3"
+  }
+}
