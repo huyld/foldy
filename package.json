@@ -2,7 +2,7 @@
   "name": "foldy",
   "version": "0.1.0",
   "description": "The React component that wraps list of components and creates the folding effect on them.",
-  "main": "index.js",
+  "main": "src/index.tsx",
   "keywords": [],
   "author": "",
   "license": "GPL-3.0-only",
