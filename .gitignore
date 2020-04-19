@@ -101,4 +101,4 @@ dist/
 
 # Vim
 Session.vim
-
+*.swp
