@@ -6,6 +6,7 @@ import FoldyList from '../FoldyList/FoldyList';
 interface Props {
   front: object,
   list: object[],
+  open: boolean,
   duration?: number,
   customClass?: string,
 }
@@ -46,6 +47,7 @@ class Foldy extends React.Component<Props, State> {
         list={list}
         totalDuration={totalDuration}
         front={<FoldyFront frontRef={this.frontRef}>{front}</FoldyFront>}
+        open={this.props.open}
         itemHeight={!!this.state.itemHeight ? this.state.itemHeight : 0}
       />
       {children}

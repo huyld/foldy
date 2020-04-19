@@ -5,7 +5,9 @@ interface Props {
   order: number,
   itemHeight: number,
   itemCount: number,
+  expanding: boolean,
   duration: number,
+  listTransitionDuration: number,
   back?: object,
   tail?: object,
 }
@@ -15,13 +17,36 @@ class FoldyItem extends React.Component<Props> {
 
   render() {
     const componentCssClass = 'foldy-item';
-    const { duration, itemCount, itemHeight, order } = this.props;
+    const { duration, itemCount, itemHeight, listTransitionDuration, expanding, order } = this.props;
     const className = `${componentCssClass} ${componentCssClass}--${order}`
+
+    const movingItemIdx = expanding
+      ? itemCount - (1 + Math.floor(listTransitionDuration / duration))
+      : 1 + Math.floor(listTransitionDuration / duration);
+
+    const timeForMovingItemToFinish = listTransitionDuration % duration;
+    let collapsingDelay = duration,
+        expandingDelay = duration;
+    if (expanding) {
+      expandingDelay = order > movingItemIdx
+        ? (order - movingItemIdx - 1) * duration + timeForMovingItemToFinish
+        : 0;
+    } else {
+      collapsingDelay = order < movingItemIdx
+        ? (movingItemIdx - order - 1) * duration + timeForMovingItemToFinish
+        : 0;
+    }
+
+    let itemTransitionDuration = duration;
+    if (order === movingItemIdx && timeForMovingItemToFinish > 0)
+      itemTransitionDuration = timeForMovingItemToFinish
 
     return <StyledFoldyItem className={className}
       componentCssClass={componentCssClass}
       itemCount={itemCount}
-      transitionDuration={duration}
+      duration={itemTransitionDuration}
+      collapsingDelay={collapsingDelay}
+      expandingDelay={expandingDelay}
       itemHeight={itemHeight}
       order={order}
     >

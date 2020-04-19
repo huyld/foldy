@@ -5,7 +5,9 @@ interface StyledFoldyItemProps {
   itemCount: number,
   itemHeight: number,
   order: number,
-  transitionDuration: number,
+  duration: number,
+  collapsingDelay: number,
+  expandingDelay: number,
 }
 
 const StyledFoldyItem = styled.div<StyledFoldyItemProps>`
@@ -15,13 +17,13 @@ const StyledFoldyItem = styled.div<StyledFoldyItemProps>`
   width: 100%;
   background-color: white;
 
-  transition: transform ${props => props.transitionDuration}ms ease-in;
+  transition: transform ${props => props.duration}ms ease-in;
   transform-style: preserve-3d;
   transform-origin: center top;
 
   z-index: 1;
 
-  ${props => generateTransformProperties(props.itemCount, props.transitionDuration, props.order)}
+  ${props => generateTransformProperties(props.itemCount, props.duration, props.order, props.collapsingDelay, props.expandingDelay)}
 
   & > .${props => props.componentCssClass}__content {
     height: ${props => props.itemHeight}px;
@@ -58,21 +60,18 @@ const StyledFoldyItem = styled.div<StyledFoldyItemProps>`
   }
 `;
 
-function generateTransformProperties(itemCount: number, transitionDuration: number, order: number) {
-  let styles = '';
+function generateTransformProperties(itemCount: number, transitionDuration: number, order: number, collapsingDelay: number, expandingDelay: number) {
+  let styles;
   if (order > 0) {
-    styles += `
+    styles = css`
       &.foldy-item--${order} {
         transform: rotateX(180deg);
-        transition-delay: ${transitionDuration * (order - 1)}ms;
+        transition-delay: ${collapsingDelay}ms;
       }
 
-      .foldy-list.active &.foldy-item--${order} {
+      .foldy-list.open &.foldy-item--${order} {
         transform: rotateX(0);
-      }
-
-      .foldy-list.expanded &.foldy-item--${order} {
-        transition-delay: ${(itemCount - (order + 1)) * transitionDuration}ms;
+        transition-delay: ${expandingDelay}ms;
       }
     `;
   }
