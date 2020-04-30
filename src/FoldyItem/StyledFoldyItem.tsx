@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components';
 interface StyledFoldyItemProps {
   componentCssClass: string,
   itemCount: number,
-  itemHeight: number,
+  itemHeight: number | string,
   order: number,
   duration: number,
   collapsingDelay: number,
@@ -13,7 +13,7 @@ interface StyledFoldyItemProps {
 const StyledFoldyItem = styled.div<StyledFoldyItemProps>`
   position: absolute;
   top: 0;
-  height: ${props => props.itemHeight}px;
+  height: ${props => typeof props.itemHeight === 'string' ? props.itemHeight : props.itemHeight + 'px'};
   width: 100%;
   background-color: white;
 
@@ -27,6 +27,7 @@ const StyledFoldyItem = styled.div<StyledFoldyItemProps>`
 
   & > .${props => props.componentCssClass}__content {
     height: ${props => props.itemHeight}px;
+    display: inline-block;
 
     &::after {
       content: '';
@@ -53,6 +54,7 @@ const StyledFoldyItem = styled.div<StyledFoldyItemProps>`
     position: absolute;
     top: 0;
     left: 0;
+    height: 100%;
     width: 100%;
     transform: rotateX(180deg);
     backface-visibility: hidden;

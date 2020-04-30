@@ -5,8 +5,9 @@ import StyledFoldyList from './StyledFoldyList';
 interface Props {
   front: object,
   list: object[],
+  itemRefList: object[],
   totalDuration: number,
-  itemHeight: number,
+  itemHeight: number | string,
   open: boolean,
 }
 
@@ -107,7 +108,7 @@ class FoldyList extends React.Component<Props, State> {
   }
 
   render() {
-    const { front, list, itemHeight, open, totalDuration } = this.props;
+    const { front, list, itemHeight, itemRefList, open, totalDuration } = this.props;
     const { animating, expanded, transitionTimePassed } = this.state;
     const itemTransitionDuration = totalDuration / list.length;
     const foldyListTransitionDuration = transitionTimePassed
@@ -129,6 +130,7 @@ class FoldyList extends React.Component<Props, State> {
         return <FoldyItem
           itemCount={list.length}
           itemHeight={itemHeight}
+          itemRef={itemRefList[idx]}
           expanding={open}
           duration={itemTransitionDuration}
           listTransitionDuration={foldyListTransitionDuration}

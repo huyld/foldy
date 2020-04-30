@@ -3,7 +3,8 @@ import StyledFoldyItem from './StyledFoldyItem';
 
 interface Props {
   order: number,
-  itemHeight: number,
+  itemHeight: number | string,
+  itemRef: object,
   itemCount: number,
   expanding: boolean,
   duration: number,
@@ -17,7 +18,7 @@ class FoldyItem extends React.Component<Props> {
 
   render() {
     const componentCssClass = 'foldy-item';
-    const { duration, itemCount, itemHeight, listTransitionDuration, expanding, order } = this.props;
+    const { duration, itemCount, itemHeight, itemRef, listTransitionDuration, expanding, order } = this.props;
     const className = `${componentCssClass} ${componentCssClass}--${order}`
 
     const movingItemIdx = expanding
@@ -49,6 +50,7 @@ class FoldyItem extends React.Component<Props> {
       expandingDelay={expandingDelay}
       itemHeight={itemHeight}
       order={order}
+      ref={itemRef}
     >
       <div className={`${componentCssClass}__content`}>
         {this.props.children}

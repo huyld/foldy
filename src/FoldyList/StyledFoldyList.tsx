@@ -2,14 +2,14 @@ import styled, { css } from 'styled-components';
 
 interface StyledFoldyListProps {
   itemCount: number,
-  itemHeight: number,
+  itemHeight: number | string,
   transitionDuration: number,
 }
 
 const StyledFoldyList = styled.div<StyledFoldyListProps>`
   position: relative;
   width: 100%;
-  height: ${props => props.itemHeight}px;
+  height: ${props => typeof props.itemHeight === 'string' ? props.itemHeight : props.itemHeight + 'px'};
   background-color: lightcoral;
   perspective: 1000px;
 

@@ -21,10 +21,12 @@ class Foldy extends React.Component<Props, State> {
   readonly DEFAULT_DURATION = 1000;
 
   frontRef: any;
+  itemRefList: any;
 
   constructor(props: Props) {
     super(props);
     this.frontRef = React.createRef();
+    this.itemRefList = Array.from(Array(props.list.length), () => React.createRef());
 
     this.state = {
       itemHeight: 0
@@ -32,8 +34,13 @@ class Foldy extends React.Component<Props, State> {
   }
 
   componentDidMount() {
+    const maxHeight = Math.max(...[
+      this.frontRef.current.clientHeight,
+      ...this.itemRefList.map(ref => ref.current.clientHeight)
+    ]);
+
     this.setState({
-      itemHeight: this.frontRef.current.clientHeight
+      itemHeight: maxHeight
     });
   }
 
@@ -45,10 +52,11 @@ class Foldy extends React.Component<Props, State> {
     return <StyledFoldy className={`foldy ${customClass}`}>
       <FoldyList
         list={list}
+        itemRefList={this.itemRefList}
         totalDuration={totalDuration}
         front={<FoldyFront frontRef={this.frontRef}>{front}</FoldyFront>}
         open={this.props.open}
-        itemHeight={!!this.state.itemHeight ? this.state.itemHeight : 0}
+        itemHeight={!!this.state.itemHeight ? this.state.itemHeight : 'auto'}
       />
       {children}
     </StyledFoldy>;
