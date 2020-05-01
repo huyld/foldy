@@ -7,13 +7,12 @@
   "author": "",
   "license": "GPL-3.0-only",
   "scripts": {
-    "clean": "rm dist/bundle.js",
+    "clean": "rm -r dist",
     "start": "parcel src/index.html --open",
-    "build-prod": "parcel build src/index.html"
+    "build-prod": "parcel build src/Foldy/Foldy.tsx"
   },
   "dependencies": {
-    "@types/react": "^16.9.2",
-    "react": "^16.9.0"
+    "@types/react": "^16.9.2"
   },
   "devDependencies": {
     "@babel/core": "^7.5.5",
@@ -22,10 +21,12 @@
     "@types/styled-components": "^5.1.0",
     "babel-plugin-styled-components": "^1.10.7",
     "parcel-bundler": "^1.12.4",
+    "react": "^16.13.1",
     "styled-components": "^5.1.0",
     "typescript": "^3.8.3"
   },
   "peerDependencies": {
-    "styled-components": ">= 4.2.0"
+    "styled-components": ">= 4.2.0",
+    "react": ">= 16.8.0"
   }
 }
