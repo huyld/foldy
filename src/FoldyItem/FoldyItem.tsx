@@ -4,7 +4,7 @@ import StyledFoldyItem from './StyledFoldyItem';
 interface Props {
   order: number,
   itemHeight: number | string,
-  itemRef: object,
+  itemRef: any,
   itemCount: number,
   expanding: boolean,
   duration: number,

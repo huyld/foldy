@@ -16,7 +16,11 @@ const StyledFoldyList = styled.div<StyledFoldyListProps>`
   ${props => generateAnimations(props.itemCount, props.itemHeight, props.transitionDuration)}
 `;
 
-function generateAnimations(itemCount: number, itemHeight: number, transitionDuration: number) {
+function generateAnimations(itemCount: number, itemHeight: number | string, transitionDuration: number) {
+  const marginBottom = typeof itemHeight === 'string'
+    ? 'auto'
+    : (itemHeight * (itemCount - 1)) + 'px';
+
   return css`
     &.foldy-list--${itemCount} {
       transition-property: margin-bottom;
@@ -30,7 +34,7 @@ function generateAnimations(itemCount: number, itemHeight: number, transitionDur
       transition-duration: ${transitionDuration}ms;
       transition-delay: 0s;
       transition-timing-function: ease-out;
-      margin-bottom: ${itemHeight * (itemCount - 1)}px;
+      margin-bottom: ${marginBottom};
     }
   `;
 }

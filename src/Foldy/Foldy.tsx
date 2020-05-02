@@ -36,7 +36,7 @@ class Foldy extends React.Component<Props, State> {
   componentDidMount() {
     const maxHeight = Math.max(...[
       this.frontRef.current.clientHeight,
-      ...this.itemRefList.map(ref => ref.current.clientHeight)
+      ...this.itemRefList.map((ref: any) => ref.current.clientHeight)
     ]);
 
     this.setState({
