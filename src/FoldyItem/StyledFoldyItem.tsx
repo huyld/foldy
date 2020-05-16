@@ -27,6 +27,7 @@ const StyledFoldyItem = styled.div<StyledFoldyItemProps>`
 
   & > .${props => props.componentCssClass}__content {
     height: ${props => props.itemHeight}px;
+    width: 100%;
     display: inline-block;
 
     &::after {

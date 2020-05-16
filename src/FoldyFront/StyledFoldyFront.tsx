@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 const StyledFoldyFront = styled.div`
-  height: 100%;
+  height: auto;
   position: relative;
   overflow: auto;
   background-color: white;
