@@ -1,16 +1,32 @@
 {
   "name": "foldy",
-  "version": "0.0.1",
-  "description": "The React component that wraps list of components and creates the folding effect on them.",
+  "version": "0.1.0",
+  "description": "The React component that wraps list of components and creates a folding list.",
   "main": "dist/Foldy.js",
   "source": "src/Foldy/Foldy.tsx",
-  "keywords": [],
-  "author": "",
+  "types": "dist/Foldy/Foldy.d.ts",
+  "keywords": [
+    "flip",
+    "fold",
+    "list",
+    "react-component"
+  ],
+  "author": {
+    "name": "huyld"
+  },
   "license": "GPL-3.0-only",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/huyld/foldy.git"
+  },
   "scripts": {
     "clean": "rm -r dist .rts2_cache_cjs",
     "build-prod": "microbundle --format cjs"
   },
+  "files": [
+    "COPYING",
+    "dist/"
+  ],
   "dependencies": {
     "@types/react": "^16.9.2"
   },
