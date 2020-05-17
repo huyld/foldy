@@ -1,6 +1,6 @@
 {
   "name": "foldy",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "The React component that wraps list of components and creates a folding list.",
   "main": "dist/Foldy.js",
   "source": "src/Foldy/Foldy.tsx",
