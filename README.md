@@ -2,6 +2,8 @@
 
 The React component that wraps list of components and creates a folding list.
 
+You can see a demo at https://huyld.github.io/foldy-demo/
+
 
 ## Installation
 This package requires peer dependency `styled-components` version >= 4.2.0 and `react` version >= 16.8.0
@@ -41,7 +43,7 @@ Beside CSS classes mentioned above for `foldy` components, These CSS selectors s
 - `.foldy > .foldy-item__content::after`: the back face of each item.
 - `.foldy-list.open`: class `.open` is attached to `foldy` when it's in open state.
 
-## Examples
+## Example
 
 ```javascript
 import Foldy from 'foldy';
