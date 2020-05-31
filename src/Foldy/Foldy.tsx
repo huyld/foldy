@@ -17,7 +17,6 @@ interface State {
 
 
 class Foldy extends React.Component<Props, State> {
-  readonly EACH_FLIP_DURATION = 1000;
   readonly DEFAULT_DURATION = 1000;
 
   frontRef: any;

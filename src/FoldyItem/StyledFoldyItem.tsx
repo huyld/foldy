@@ -16,6 +16,7 @@ const StyledFoldyItem = styled.div<StyledFoldyItemProps>`
   height: ${props => typeof props.itemHeight === 'string' ? props.itemHeight : props.itemHeight + 'px'};
   width: 100%;
   background-color: white;
+  perspective: inherit;
 
   transition: transform ${props => props.duration}ms ease-in;
   transform-style: preserve-3d;
@@ -29,6 +30,7 @@ const StyledFoldyItem = styled.div<StyledFoldyItemProps>`
     height: ${props => props.itemHeight}px;
     width: 100%;
     display: inline-block;
+    transform-style: preserve-3d;
 
     &::after {
       content: '';
@@ -40,7 +42,6 @@ const StyledFoldyItem = styled.div<StyledFoldyItemProps>`
       height: 100%;
       width: 100%;
       transform: rotateX(180deg);
-      transform-style: preserve-3d;
       backface-visibility: hidden;
       background-color: whitesmoke;
       z-index: 2;
@@ -49,6 +50,7 @@ const StyledFoldyItem = styled.div<StyledFoldyItemProps>`
 
   & > .${props => props.componentCssClass}__tail {
     position: relative;
+    perspective: inherit;
   }
 
   & > .${props => props.componentCssClass}__back {
